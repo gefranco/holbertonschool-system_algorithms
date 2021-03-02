@@ -8,8 +8,15 @@
 * 4. every path from a node to any of its descendendents NIL node
 *  has the same No of Black nodes
 */
+
 int depth_blacks(const rb_tree_t *node);
 int is_bst(const rb_tree_t *tree);
+
+/**
+ * rb_tree_is_valid - Validate if a R-B tree is valid
+ * @tree: the tree to validate
+ * Return: 1 if valid 0 otherwise
+ */
 int rb_tree_is_valid(const rb_tree_t *tree)
 {
 	(void) tree;
@@ -23,7 +30,11 @@ int rb_tree_is_valid(const rb_tree_t *tree)
 		return (0);
 	return (1);/*valid*/
 }
-
+/**
+ * is_bst - Validate if a tree is valid binary tree search
+ * @node: the tree-node to validate
+ * Return: 1 if valid 0 otherwise
+ */
 int is_bst(const rb_tree_t *node)
 {
 	if (node == NULL)
@@ -43,7 +54,11 @@ int is_bst(const rb_tree_t *node)
 		return (0);
 	return (1);
 }
-
+/**
+ * depth_blacks - Calculate the depth of black nodes in B-R trees
+ * @node: the node-tree to calculate
+ * Return: the depth of black nodes -1 if is not valid
+ */
 int depth_blacks(const rb_tree_t *node)
 {
 	int leftH;
