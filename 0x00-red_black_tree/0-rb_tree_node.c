@@ -1,5 +1,13 @@
 #include "rb_trees.h"
 #include <stdlib.h>
+
+/**
+ * rb_tree_node - create a red-black node 
+ * @parent: the parent of the node to crate
+ * @value: the value of the new node
+ * @color: the color of the new node: BLACK or RED
+ * Return: A pointer to the created node
+ */
 rb_tree_t *rb_tree_node(rb_tree_t *parent, int value, rb_color_t color)
 {
 
