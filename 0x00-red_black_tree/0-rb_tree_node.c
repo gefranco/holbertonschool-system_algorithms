@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * rb_tree_node - create a red-black node 
+ * rb_tree_node - create a red-black node
  * @parent: the parent of the node to crate
  * @value: the value of the new node
  * @color: the color of the new node: BLACK or RED
