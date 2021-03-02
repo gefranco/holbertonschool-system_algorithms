@@ -25,6 +25,13 @@ rb_tree_t *get_uncle(rb_tree_t *node);
 int recolor(int rot_cas, rb_tree_t *node);
 rb_tree_t *insert_left_node(rb_tree_t *tree, int value);
 rb_tree_t *insert_right_node(rb_tree_t *tree, int value);
+
+/**
+ * rb_tree_insert - insert a node in a R-B tree
+ * @tree: the node to insert
+ * @value: the node's value
+ * Return: pointer to the node inserted
+ */
 rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 {
 	rb_tree_t *node;
@@ -51,6 +58,12 @@ rb_tree_t *rb_tree_insert(rb_tree_t **tree, int value)
 	}
 	return (node);
 }
+/**
+ * check - checker wheter a rotate or recolor is needed in a R-B tree
+ * @node: the node to check
+ * @tree: root's pointer
+ * Return: 0 if success
+ */
 int check(rb_tree_t *node, rb_tree_t **tree)
 {
 	if (node->parent->parent != NULL && node->parent->color == RED)
@@ -71,6 +84,13 @@ int check(rb_tree_t *node, rb_tree_t **tree)
 	}
 	return (0);
 }
+/**
+ * rotate - do the corresponding rotation in a R-B tree
+ * @rot_case: the rotation to do
+ * @node: the node to rotate
+ * @tree: pointer to the root tree
+ * Return: 1 on success
+ */
 int rotate(int rot_case, rb_tree_t *node, rb_tree_t **tree)
 {
 	rb_tree_t *nr, *ln, *root;
@@ -180,6 +200,11 @@ int rotate(int rot_case, rb_tree_t *node, rb_tree_t **tree)
 	return (1);
 }
 
+/**
+ * get_config - select what rotation is required in a R-B tree
+ * @node: the node to check
+ * Return: the type of rotation required
+ */
 int get_config(rb_tree_t *node)
 {
 	if (node->parent->left != NULL && node->parent->left == node)
@@ -200,6 +225,13 @@ int get_config(rb_tree_t *node)
 
 	return (LEFT_LEFT);
 }
+
+/**
+ * insert_left_node - insert a node in a R-B tree
+ * @tree: the node to insert
+ * @value: the vlue of the node
+ * Return: pointer to the node inserted
+ */
 rb_tree_t *insert_left_node(rb_tree_t *tree, int value)
 {
 	while (tree->left && value <= tree->n)
@@ -225,7 +257,12 @@ rb_tree_t *insert_left_node(rb_tree_t *tree, int value)
 	}
 		return (NULL);
 }
-
+/**
+ * insert_right_node - insert a node in a R-B tree
+ * @tree: the node to insert
+ * @value: the value of the node
+ * Return: pointer to the node inserted
+ */
 rb_tree_t *insert_right_node(rb_tree_t *tree, int value)
 {
 	while (tree->right && value >= tree->n)
@@ -248,7 +285,12 @@ rb_tree_t *insert_right_node(rb_tree_t *tree, int value)
 		return (insert_left_node(tree, value));
 	return (NULL);
 }
-
+/**
+ * recolor - do the recolor in a R-B tree
+ * @node: the node to recolor
+ * @recolor: type of recolor
+ * Return: 1 on success
+ */
 int recolor(int recolor, rb_tree_t *node)
 {
 	if (recolor == 1)
@@ -266,7 +308,11 @@ int recolor(int recolor, rb_tree_t *node)
 	}
 	return (1);
 }
-
+/**
+ * get_uncle - get the uncle of a node in a R-B tree
+ * @node: the node to retrieve the uncle's from
+ * Return: pointer to the uncle node
+ */
 rb_tree_t *get_uncle(rb_tree_t *node)
 {
 	rb_tree_t *uncle;
@@ -284,7 +330,11 @@ rb_tree_t *get_uncle(rb_tree_t *node)
 	}
 	return (uncle);
 }
-
+/**
+ * check_reds - check if a node violate a red red rule of the R-B tree
+ * @node: the node to check
+ * Return: pointer to the node that violates the rule
+ */
 rb_tree_t *check_reds(rb_tree_t *node)
 {
 	while (node->parent)
