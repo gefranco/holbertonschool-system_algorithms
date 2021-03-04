@@ -7,6 +7,12 @@ int node_is_leaf(const rb_tree_t *node);
 int delete_node(rb_tree_t *node);
 rb_tree_t *search_left_node(rb_tree_t *tree, int value);
 rb_tree_t *search_right_node(rb_tree_t *tree, int value);
+/**
+ * rb_tree_remove - removes a node from a R-B tree
+ * @root: the root's tree
+ * @n: the value's node to remove
+ * Return: roots pointer
+ */
 rb_tree_t *rb_tree_remove(rb_tree_t *root, int n)
 {
 	rb_tree_t *node = NULL;
@@ -23,7 +29,11 @@ rb_tree_t *rb_tree_remove(rb_tree_t *root, int n)
 	}
 	return (root);
 }
-
+/**
+ * delete_node - removes a node from a R-B tree
+ * @node: the node to remove
+ * Return: 1 or 0
+ */
 int delete_node(rb_tree_t *node)
 {
 	if (node->parent == NULL && node->color == DOUBLE_BLACK)
@@ -37,12 +47,12 @@ int delete_node(rb_tree_t *node)
 		if (node->parent->right == node)
 		{
 			node->parent->right = NULL;
-			return (0);
+			return (1);
 		}
 		else
 		{
 			node->parent->left = NULL;
-			return (0);
+			return (1);
 		}
 	}
 
@@ -151,15 +161,12 @@ int delete_node(rb_tree_t *node)
 	return (1);
 }
 
+
 /**
-*int red_childrens(rb_tree_t *node)
-*{
-*	if ((node->left && node->left->color == RED) ||
-*		(node->right && node->right->color == RED))
-*		return (1);
-*	return (0);
-*}
-*/
+ * node_in_order_succesor - retrieves the in order succesor node's
+ * @node: the node to check if is leaf
+ * Return: node's pointer
+ */
 rb_tree_t *node_in_order_succesor(rb_tree_t *node)
 {
 	rb_tree_t *left;
@@ -216,7 +223,11 @@ rb_tree_t *search_right_node(rb_tree_t *tree, int value)
 
 	return (NULL);
 }
-
+/**
+ * node_is_leaf - check if node is leaf: no childs
+ * @node: the node to check if is leaf
+ * Return: 1 if is leaf 0 otherwise
+ */
 int node_is_leaf(const rb_tree_t *node)
 {
 	if (node == NULL)
@@ -228,6 +239,11 @@ int node_is_leaf(const rb_tree_t *node)
 
 }
 
+/**
+ * node_sibling - finds the sibling of a node
+ * @node: pointer to the node
+ * Return: the sibling's node
+ */
 rb_tree_t *node_sibling(rb_tree_t *node)
 {
 
