@@ -30,6 +30,7 @@ void graph_delete(graph_t *graph)
 	free(vertex->content);
 	free(vertex);
 	free(graph);
+	graph = NULL;
 }
 /**
  * delete_edges - deletes the graph's edges
