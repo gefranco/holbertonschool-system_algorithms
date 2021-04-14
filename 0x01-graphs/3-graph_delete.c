@@ -8,9 +8,13 @@ void delete_edges(vertex_t *vertex);
  */
 void graph_delete(graph_t *graph)
 {
-	vertex_t *vertex = graph->vertices;
+	vertex_t *vertex;
 	vertex_t *tmp_vertex;
 
+	if (!graph)
+		return;
+
+	vertex = graph->vertices;
 	while (vertex->next)
 	{
 		tmp_vertex = vertex->next;
