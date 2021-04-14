@@ -19,6 +19,8 @@ int graph_add_edge(graph_t *graph, const char *src,
 	vertex_t *dest_vertex = NULL;
 	edge_t *edge = NULL;
 
+	if (!src || !dest)
+		return (0);
 	src_vertex = get_vertex(graph, src);
 	dest_vertex = get_vertex(graph, dest);
 	if (!src_vertex || !dest_vertex)
