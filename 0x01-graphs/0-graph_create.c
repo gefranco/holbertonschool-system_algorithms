@@ -1,14 +1,19 @@
 #include "graphs.h"
 
+/**
+ * graph_create - allocates memory and initializes content of a graph
+ *
+ * Return: graph's pointer
+ */
 graph_t *graph_create(void)
 {
 	graph_t *graph = NULL;
 
 	graph = malloc(sizeof(graph_t));
 	if (!graph)
-		return NULL;
+		return (NULL);
 
 	graph->nb_vertices = 0;
-        graph->vertices = NULL;	
+	graph->vertices = NULL;
 	return (graph);
 }
