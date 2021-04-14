@@ -29,7 +29,6 @@ void graph_delete(graph_t *graph)
 	free(vertex->content);
 	free(vertex);
 	free(graph);
-	graph = NULL;
 }
 /**
  * delete_edges - deletes the graph's edges
@@ -40,6 +39,8 @@ void delete_edges(vertex_t *vertex)
 	edge_t *edge = vertex->edges;
 	edge_t *tmp_edge;
 
+	if (!edge)
+		return;
 	while (edge->next)
 	{
 		tmp_edge = edge->next;
