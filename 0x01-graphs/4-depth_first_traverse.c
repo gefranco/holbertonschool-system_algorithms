@@ -15,6 +15,7 @@ size_t depth_first_traverse(const graph_t *graph,
 	if (!graph || !action)
 		return (0);
 	if (!graph->vertices)
+		return(0);
 	indices = calloc(graph->nb_vertices, sizeof(size_t));
 	i = 0;
 	depth_ = 0;
