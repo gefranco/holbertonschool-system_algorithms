@@ -14,8 +14,11 @@ void graph_delete(graph_t *graph)
 	if (!graph)
 		return;
 
-	vertex = graph->vertices;
-
+	if (!graph->vertices)
+	{
+		free(graph);
+		return;
+	}
 	while (vertex && vertex->next)
 	{
 		tmp_vertex = vertex->next;
