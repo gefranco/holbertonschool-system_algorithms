@@ -58,7 +58,7 @@ int vertex_exist(graph_t *graph, const char *str)
 	if (!graph->vertices)
 		return (0);
 	vertex = graph->vertices;
-	while (vertex->next)
+	while (vertex)
 	{
 		if (strcmp(vertex->content, str) == 0)
 			return (1);
