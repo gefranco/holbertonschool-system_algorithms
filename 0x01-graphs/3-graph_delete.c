@@ -19,6 +19,8 @@ void graph_delete(graph_t *graph)
 		free(graph);
 		return;
 	}
+	
+	vertex = graph->vertices;
 	while (vertex && vertex->next)
 	{
 		tmp_vertex = vertex->next;
