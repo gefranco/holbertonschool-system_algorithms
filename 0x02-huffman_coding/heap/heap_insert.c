@@ -11,6 +11,8 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	int *n_path;
 	int *data_parent, *data_child;
 
+	if (!heap || !data)
+		return (NULL);
 	if (!heap->root)
 	{
 		heap->root = binary_tree_node(NULL, data);
