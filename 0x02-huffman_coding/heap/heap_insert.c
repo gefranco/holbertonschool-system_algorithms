@@ -13,9 +13,12 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 
 	if (!heap || !data)
 		return (NULL);
+
 	if (!heap->root)
 	{
 		heap->root = binary_tree_node(NULL, data);
+		if (!heap->root)
+			return (NULL);
 		heap->size += 1;
 		return (heap->root);
 	}
@@ -50,7 +53,7 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 		current = current->parent;
 	}
 
-
+	free(n_path);
 	heap->size += 1;
 
 
