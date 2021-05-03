@@ -17,8 +17,6 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	if (!heap->root)
 	{
 		heap->root = binary_tree_node(NULL, data);
-		if (!heap->root)
-			return (NULL);
 		heap->size += 1;
 		return (heap->root);
 	}
@@ -65,7 +63,7 @@ int *path(int count)
 {
 	int j;
 	int i = 0;
-	int *path;
+	int *path = NULL;
 
 	int bkcount = count * 2;
 
@@ -75,7 +73,7 @@ int *path(int count)
 		i++;
 	}
 
-	path = malloc(sizeof(int) * i + 1);
+	path = malloc(sizeof(int) * (i + 1));
 
 	path[i] = -1;
 
