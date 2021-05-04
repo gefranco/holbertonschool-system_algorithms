@@ -9,8 +9,7 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	binary_tree_node_t *current;
 	int i;
 	int *n_path;
-	int *data_parent, *data_child;
-
+	/*int *data_parent, *data_child;*/
 	if (!heap || !data)
 		return (NULL);
 
@@ -18,8 +17,10 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	{
 		heap->root = binary_tree_node(NULL, data);
 		heap->size += 1;
+		
 		return (heap->root);
 	}
+	
 	current = heap->root;
 	n_path = path(heap->size + 1);
 	i = get_current_node(&current, n_path);
@@ -38,11 +39,12 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 
 	while (current->parent)
 	{
-		data_parent = (int *)(current->parent->data);
-		data_child = (int *)(current->data);
+		/*data_parent = (int *)(current->parent->data);
+		data_child = (int *)(current->data);*/
 		/*printf("data_parent:%d  data_child:%d current%d\n",*/
 		/**data_parent, *data_child, *((int *)current->data));*/
-		if (*data_child < *data_parent)
+		/*if (*data_child < *data_parent)*/
+		if(heap->data_cmp(current->data, current->parent->data) < 0)
 		{
 			swap(&current);
 		}
