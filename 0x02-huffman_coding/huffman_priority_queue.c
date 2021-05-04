@@ -5,11 +5,14 @@ void binary_tree_print(const binary_tree_node_t *heap, int (*print_data)(char *,
 int nested_print(char *buffer, void *data);
 int int_cmp2(void *p1, void *p2)
 {
-    symbol_t *n1, *n2;
-    n1 = (symbol_t *)p1;
-    n2 = (symbol_t *)p2;
+	binary_tree_node_t *node1, *node2;
+    	symbol_t *s1, *s2;
+	node1 = (binary_tree_node_t *)p1;
+	node2 = (binary_tree_node_t *)p2;
+    	s1 = (symbol_t *)node1->data;
+   	s2 = (symbol_t *)node2->data;
 
-    return (n1->freq - n2->freq);
+    	return (s1->freq - s2->freq);
 }
 
 heap_t *huffman_priority_queue(char *data, size_t *freq, size_t size)
