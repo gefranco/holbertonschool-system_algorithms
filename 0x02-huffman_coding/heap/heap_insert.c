@@ -4,12 +4,20 @@
 int *path(int count);
 int get_current_node(binary_tree_node_t **current, int *n_path);
 int swap(binary_tree_node_t **current);
+/**
+ * heap_insert - insert a node in a Min Binary Heap
+ *
+ * @heap: a pointer to the heap in which the node has to be inserted
+ * @data: a pointer containing the data to store in the new node
+ *
+ * Return: inserted node
+ */
 binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 {
 	binary_tree_node_t *current;
 	int i;
 	int *n_path;
-	/*int *data_parent, *data_child;*/
+
 	if (!heap || !data)
 		return (NULL);
 
@@ -17,10 +25,9 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 	{
 		heap->root = binary_tree_node(NULL, data);
 		heap->size += 1;
-		
 		return (heap->root);
 	}
-	
+
 	current = heap->root;
 	n_path = path(heap->size + 1);
 	i = get_current_node(&current, n_path);
@@ -39,12 +46,7 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 
 	while (current->parent)
 	{
-		/*data_parent = (int *)(current->parent->data);
-		data_child = (int *)(current->data);*/
-		/*printf("data_parent:%d  data_child:%d current%d\n",*/
-		/**data_parent, *data_child, *((int *)current->data));*/
-		/*if (*data_child < *data_parent)*/
-		if(heap->data_cmp(current->data, current->parent->data) < 0)
+		if (heap->data_cmp(current->data, current->parent->data) < 0)
 		{
 			swap(&current);
 		}
@@ -60,7 +62,11 @@ binary_tree_node_t *heap_insert(heap_t *heap, void *data)
 
 	return (current);
 }
-
+/**
+ * path - The path to go from the root to the node to insert a newone
+ * @count: total nodes
+ * Return: array of 1 and 0 representing the path
+ */
 int *path(int count)
 {
 	int j;
@@ -85,7 +91,12 @@ int *path(int count)
 	}
 	return (path);
 }
-
+/**
+ * get_current_node - traverse the path to the node to insert a newone
+ * @current: Pointer to the root node
+ * @n_path: path to traverse 0-left 1-right
+ * Return: the position of the node
+ */
 int get_current_node(binary_tree_node_t **current, int *n_path)
 {
 	int i = 0;
@@ -103,7 +114,11 @@ int get_current_node(binary_tree_node_t **current, int *n_path)
 	}
 	return (i);
 }
-
+/**
+ * swap - swap the value of the node with his parent's value
+ * @current: Pointer to the root node
+ * Return: 0 on success
+ */
 int swap(binary_tree_node_t **current)
 {
 	int *data;
