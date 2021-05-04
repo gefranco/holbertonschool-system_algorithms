@@ -1,4 +1,12 @@
 #include "heap.h"
+/**
+ * binary_tree_node - create a generic Binary Tree node
+ *
+ * @parent: pointer to a parent's node
+ * @data: data to be stored in the node
+ *
+ * Return: Pointer to the vreated node
+ */
 binary_tree_node_t *binary_tree_node(binary_tree_node_t *parent, void *data)
 {
 	binary_tree_node_t *node;
