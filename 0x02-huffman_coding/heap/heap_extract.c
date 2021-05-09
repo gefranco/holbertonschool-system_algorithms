@@ -2,6 +2,12 @@
 #include <stdio.h>
 
 int reorder(binary_tree_node_t *current, heap_t *heap);
+
+/**
+ * heap_extract - extracts the root value of a Min Binary Heap
+ * @heap: a pointer to the heap
+ * Return:  a pointer to the data
+ */
 void *heap_extract(heap_t *heap)
 {
 	binary_tree_node_t *current;
@@ -44,6 +50,12 @@ void *heap_extract(heap_t *heap)
 	return (data);
 }
 
+/**
+ * reorder - reorder a Min Binary Heap
+ * @heap: a pointer to the heap
+ * @current: a pointer to current node
+ * Return:  a pointer to the data
+ */
 int reorder(binary_tree_node_t *current, heap_t *heap)
 {
 	while (current->left || current->right)
