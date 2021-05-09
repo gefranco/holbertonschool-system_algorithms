@@ -36,7 +36,7 @@ void *heap_extract(heap_t *heap)
 	else
 		current->parent->left = NULL;
 	free(current);
-
+	free(n_path);
 	heap->size -= 1;
 
 	current = heap->root;
