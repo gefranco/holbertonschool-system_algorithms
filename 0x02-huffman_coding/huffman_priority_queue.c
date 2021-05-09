@@ -22,8 +22,10 @@ int int_cmp2(void *p1, void *p2)
 	node2 = (binary_tree_node_t *)p2;
 	s1 = (symbol_t *)node1->data;
 	s2 = (symbol_t *)node2->data;
-
-	return (s1->freq - s2->freq);
+	if(s1->freq != s2->freq)
+		return (s1->freq - s2->freq);
+	return
+		(s1->data - s2->data);
 }
 
 /**

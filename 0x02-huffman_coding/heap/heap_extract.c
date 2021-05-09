@@ -60,16 +60,17 @@ int reorder(binary_tree_node_t *current, heap_t *heap)
 {
 	while (current->left || current->right)
 	{
-	int data_left;
+	/*int data_left;
 	int data_right;
 
 	data_left = 0;
 	data_right = 0;
 	if (current->left)
-		data_left = *((int *)current->left->data);
+		data_left = *((void *)current->left->data);
 	if (current->right)
-		data_right = *((int *)current->right->data);
-	if (!current->right || data_left < data_right)
+		data_right = *((void *)current->right->data);
+	if (!current->right || data_left < data_right)*/
+	if (!current->right || heap->data_cmp(current->left->data, current->right->data) < 0)
 		current = current->left;
 		else
 			current = current->right;
