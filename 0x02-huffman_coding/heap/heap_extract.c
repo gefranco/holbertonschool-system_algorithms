@@ -11,6 +11,16 @@ void *heap_extract(heap_t *heap)
 	if (!heap)
 		return (NULL);
 
+	if (heap->size == 1)
+	{
+		data = heap->root->data;
+		heap->root = NULL;
+		heap->size -= 1;
+		free(heap->root);
+		return data;
+		
+	}
+	
 	current = heap->root;
 	n_path = path(heap->size);
 	get_current_node(&current, n_path);
