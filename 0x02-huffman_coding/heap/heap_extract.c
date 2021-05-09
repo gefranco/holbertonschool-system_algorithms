@@ -14,9 +14,10 @@ void *heap_extract(heap_t *heap)
 	if (heap->size == 1)
 	{
 		data = heap->root->data;
+		heap->root->data = NULL;
+		free(heap->root);
 		heap->root = NULL;
 		heap->size -= 1;
-		free(heap->root);
 		return data;
 		
 	}
