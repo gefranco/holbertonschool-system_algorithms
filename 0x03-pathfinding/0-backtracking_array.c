@@ -4,6 +4,16 @@
 #include <string.h>
 queue_t *backtrack(int x, int y, char **map,
 			point_t const *target, int cols, int rows, queue_t *path);
+
+/**
+ * backtracking_array - function that searches for the first path
+ * @map: pointer to a read-only two-dimensional array
+ * @rows: the number of rows of map
+ * @cols: the number of columns of map
+ * @start: stores the coordinates of the starting point
+ * @target: stores the coordinates of the target point
+ * Return: a queue in which each node is a point from start to target
+ */
 queue_t *backtracking_array(char **map, int rows, int cols,
 				point_t const *start, point_t const *target)
 {
@@ -24,7 +34,17 @@ queue_t *backtracking_array(char **map, int rows, int cols,
 	return (backtrack(x, y, visited, target, cols, rows, path));
 }
 
-
+/**
+ * backtrack- backtraking
+ * @map: pointer to a read-only two-dimensional array
+ * @x: ...
+ * @y: ...
+ * @rows: ...
+ * @cols: ...
+ * @target: stores the coordinates of the target point
+ * @path: ...
+ * Return: a queue in which each node is a point from start to target
+ */
 queue_t *backtrack(int x, int y, char **map,
 			point_t const *target, int rows, int cols, queue_t *path)
 {
