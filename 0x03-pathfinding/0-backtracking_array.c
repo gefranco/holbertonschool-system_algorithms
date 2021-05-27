@@ -31,7 +31,11 @@ queue_t *backtracking_array(char **map, int rows, int cols,
 		for (i = 0; i < rows; i++)
 			visited[i] = strdup(map[i]);
 
-	return (backtrack(x, y, visited, target, cols, rows, path));
+	(backtrack(x, y, visited, target, cols, rows, path));
+	for (i = 0; i < rows; i += 1)
+		free(visited[i]);
+	free(visited);
+	return (path);
 }
 
 /**
