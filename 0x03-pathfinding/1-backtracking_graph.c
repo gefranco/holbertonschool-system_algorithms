@@ -10,10 +10,10 @@ queue_t *backtracking_graph(graph_t *graph, vertex_t const *start, vertex_t cons
 
 
 	visited = calloc(graph->nb_vertices, sizeof(char));
-
-	path =(backtracking(path, start, target, visited));	
-	free(visited);
-	return (path);
+	path = backtracking(path, start, target, visited);
+	queue_push_front(path, start->content);		
+	return path;	
+	
 
 }
 
@@ -27,12 +27,13 @@ queue_t *backtracking(queue_t *path, vertex_t const *start, const vertex_t *targ
 	if (!start || visited[start->index])
 		return NULL;
 		
-	visited[start->index] = '1';
+	visited[start->index] = 1;
 	printf("Checking %s\n", start->content);
 
 	if(start == target)
+	{
 		return(path);
-		
+	}	
 	for (edges = start->edges; edges; edges = edges->next)
 	{
 		if(backtracking(path, edges->dest, target, visited))
