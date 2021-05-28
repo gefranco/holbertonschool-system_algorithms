@@ -1,7 +1,7 @@
 #include "pathfinding.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 queue_t *backtracking(queue_t *path, vertex_t const *start, const vertex_t *target, char *);
 queue_t *backtracking_graph(graph_t *graph, vertex_t const *start, vertex_t const *target)
 {
@@ -11,7 +11,7 @@ queue_t *backtracking_graph(graph_t *graph, vertex_t const *start, vertex_t cons
 
 	visited = calloc(graph->nb_vertices, sizeof(char));
 	path = backtracking(path, start, target, visited);
-	queue_push_front(path, start->content);		
+	queue_push_front(path, strdup(start->content));		
 	free(visited);
 	return path;	
 	
@@ -39,7 +39,7 @@ queue_t *backtracking(queue_t *path, vertex_t const *start, const vertex_t *targ
 	{
 		if(backtracking(path, edges->dest, target, visited))
 		{
-			queue_push_front(path, edges->dest->content);	
+			queue_push_front(path, strdup(edges->dest->content));	
 			return path;
 		}
 	}
