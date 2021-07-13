@@ -37,25 +37,11 @@ size_t nary_tree_traverse(nary_tree_t const *root,
 				void (*action)(nary_tree_t const *node, size_t depth))
 {
 
-	nary_tree_t *children;
-	static size_t current_depth = 0, depth_final;
 
 	if (!root)
 		return (0);
 
-	action(root, current_depth);
-	children = root->children;
-	depth_final = current_depth;
-	while (children)
-	{
-		current_depth += 1;
-		current_depth = nary_tree_traverse(children, action);
-		if (current_depth > depth_final)
-			depth_final = current_depth;
-		children = children->next;
-	}
-
-	return (depth_final);
+	return (get_depth_nary(root, 0, action));
 
 }
 
