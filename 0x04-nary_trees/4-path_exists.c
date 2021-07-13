@@ -18,7 +18,6 @@ int path_exists(nary_tree_t const *root, char const * const *path)
 		return (1);
 
 	n = root;
-	printf("%s - %s\n", *path, n->content);
 
 	while (n)
 	{
